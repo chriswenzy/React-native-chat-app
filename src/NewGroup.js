@@ -36,7 +36,7 @@ export default class NewGroup extends React.Component {
               <Text
                 style={styles.btnText}
                 onPress={() => {
-                  this.props.navigation.navigate('Message');
+                  this.props.navigation.navigate('Groups');
                 }}>
                 Create/Join
               </Text>

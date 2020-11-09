@@ -7,6 +7,7 @@ import {
   AsyncStorage,
   TouchableOpacity,
   Image,
+  Button,
 } from 'react-native';
 
 export default class Message extends React.Component {
@@ -15,6 +16,18 @@ export default class Message extends React.Component {
       <TouchableOpacity onPress={this.props.onPress} style={styles.container}>
 
         <View>
+
+          <View>
+          <View style={styles.btnContainer}>
+              <Text
+                style={styles.btnText}
+                onPress={() => {
+                  this.props.navigation.navigate('NewGroup');
+                }}>
+                Login
+              </Text>
+            </View>
+          </View>
 
           <View style={{
             flex: 1,
@@ -53,17 +66,22 @@ export default class Message extends React.Component {
            
           </View>
     
-          <View>
+          <View style={styles.MessageContainer}>
+              <View style={styles.Message}>
               <TextInput
-            style={styles.Message}
-            placeholder="Please enter message here"
-            autoCapitalize="characters"
-            autoCorrect={false}
-            placeholderTextColor="#B3B4B9"
-            onChangeText={(val) => this.onChangeText('mesg', val)}
-          />
-            
+              style={{width: "300px",}}
+                  placeholder="Please enter message here"
+                  autoCapitalize="characters"
+                  autoCorrect={false}
+                  placeholderTextColor="#B3B4B9"
+                  onChangeText={(val) => this.onChangeText('mesg', val)}
+                />
+                  <Button 
+                  title="Send"
+                  style={styles.BtnSend}></Button>
+              </View>
           </View>
+          
         </View>
       </TouchableOpacity>
     );
@@ -89,15 +107,20 @@ const styles = StyleSheet.create({
     borderRadius: 5,
   },
 
-  Message: {
-    width: "100%",
-    fontSize: 14,
-    fontWeight: '500',
-    backgroundColor: '#F7F7F7',
-    marginTop: 20,
+  MessageContainer: {
+  //  alignItems: 'stretch',
+   backgroundColor: '#F7F7F7',
+   flexDirection: 'row',
+  },
+
+  Message:{
+    // fontSize: 14,
+    // fontWeight: '500',
+    height: 50,
     color: 'black',
     padding: 10,
     borderRadius: 5,
+    flexDirection: 'row',
   },
 
 });
